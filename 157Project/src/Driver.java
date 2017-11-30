@@ -81,27 +81,7 @@ public class Driver {
 			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('13','0545791324')",
 	};
 	
-	// Executes all queries
-	public static void main(String[] args) throws Exception{
-		createTable();
-		post();
-		System.out.println("Select all authors");
-		getAuthors();
-		System.out.println("Select all publishers");
-		getPublishers();
-		System.out.println("Select a specific publisher");
-		getSpecificPublishers("Amacom");
-		System.out.println("Add new author");
-		addNewAuthor();
-		System.out.println("Update existing info for author");
-		updateAuthor();	
-		System.out.println("Add new publisher");
-		addNewPublisher();
-		System.out.println("Edit existing info for publisher");
-		updatePublisher();
-		System.out.println("Add new title for an author");
-		addNewTitle();
-	}
+	
 	
 	// Update a current existing author in authors table
 	// Prints updated authors table
@@ -323,5 +303,27 @@ public class Driver {
 			System.out.println(e);
 		}
 		return null;
+	}
+
+	// Executes all queries
+	public static void main(String[] args) throws Exception{
+		createTable();
+		post();
+		System.out.println("Select all authors");
+		getAuthors();
+		System.out.println("Select all publishers");
+		getPublishers();
+		System.out.println("Select a specific publisher");
+		getSpecificPublishers("Amacom");
+		System.out.println("Add new author");
+		addNewAuthor();
+		System.out.println("Update existing info for author");
+		updateAuthor();	
+		System.out.println("Add new publisher");
+		addNewPublisher();
+		System.out.println("Edit existing info for publisher");
+		updatePublisher();
+		System.out.println("Add new title for an author");
+		addNewTitle();
 	}
 }
