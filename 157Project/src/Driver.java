@@ -259,7 +259,7 @@ public class Driver {
 			// Used to drop existing tables
 			// Best used during testing
 //USED FOR TESTING***************************************			
-			//PreparedStatement dropTables = conn.prepareStatement("DROP TABLE `Books`.`authorISBN`, `Books`.`authors`, `Books`.`publishers`, `Books`.`titles`;");
+			PreparedStatement dropTables = conn.prepareStatement("DROP TABLE `Books`.`authorISBN`, `Books`.`authors`, `Books`.`publishers`, `Books`.`titles`;");
 			//dropTables.executeUpdate();
 			
 			// Creates an authors table with PRIMARY KEY authorID, firstName, and lastName
