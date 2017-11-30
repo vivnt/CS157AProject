@@ -1,6 +1,8 @@
 import java.sql.*;
 public class Driver {
 
+	//I farted - vivian
+
 	// Queries for adding titles table
 	static String titles[] = {
 			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0743250974','1','2004','12','The 7 Habits','6')",
