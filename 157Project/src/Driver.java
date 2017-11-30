@@ -1,23 +1,24 @@
 import java.sql.*;
+
 public class Driver {
 
 	// Queries for adding titles table
 	static String titles[] = {
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0743250974','1','2004','12','The 7 Habits','6')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0814436714','1','2017','20','Ask More Questions','7')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1250093465','1','2017','16','The Code of Trust','9')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1501124021','1','2017','12','Principles: Life and Work','10')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0062457713','1','2016','10','The Subtle Art','12')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0375869026','1','2012','6','Wonder','1')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0143111728','1','2017','12','Find your why','11')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1623156122','1','2016','6','The Instant Pot','0')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0545392551','1','2012','2','Giraffes cant dance','2')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0316512583','1','2017','22','Obama','3')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0385514239','1','2017','14','Origin','4')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0399593489','1','2017','11','The Midnight Line','5')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1632861054','1','2017','11','A More Beautiful Question','8')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('150117813X','1','2017','18','In the Midst of Winter','13')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0545791324','1','2016','20','Harry Potter','14')"
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0743250974','1','2004','12.20','The 7 Habits','6')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0814436714','1','2017','20.75','Ask More Questions','7')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1250093465','1','2017','12.20','The Code of Trust','9')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1501124021','1','2017','12.20','Principles: Life and Work','10')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0062457713','1','2016','12.20','The Subtle Art','12')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0375869026','1','2012','12.20','Wonder','1')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0143111728','1','2017','12.20','Find your why','11')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1623156122','1','2016','12.20','The Instant Pot','0')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0545392551','1','2012','12.20','Giraffes cant dance','2')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0316512583','1','2017','12.20','Obama','3')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0385514239','1','2017','12.20','Origin','4')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0399593489','1','2017','12.20','The Midnight Line','5')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1632861054','1','2017','12.20','A More Beautiful Question','8')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('150117813X','1','2017','12.20','In the Midst of Winter','13')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0545791324','1','2016','12.20','Harry Potter','14')"
 	};
 	
 	// Queries for adding publishers table
@@ -77,27 +78,7 @@ public class Driver {
 			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('13','0545791324')",
 	};
 	
-	// Executes all queries
-	public static void main(String[] args) throws Exception{
-		createTable();
-		post();
-		System.out.println("Select all authors");
-		getAuthors();
-		System.out.println("Select all publishers");
-		getPublishers();
-		System.out.println("Select a specific publisher");
-		getSpecificPublishers("Amacom");
-		System.out.println("Add new author");
-		addNewAuthor();
-		System.out.println("Update existing info for author");
-		updateAuthor();	
-		System.out.println("Add new publisher");
-		addNewPublisher();
-		System.out.println("Edit existing info for publisher");
-		updatePublisher();
-		System.out.println("Add new title for an author");
-		addNewTitle();
-	}
+	
 	
 	// Update a current existing author in authors table
 	// Prints updated authors table
@@ -277,11 +258,12 @@ public class Driver {
 			
 			// Used to drop existing tables
 			// Best used during testing
+//USED FOR TESTING***************************************			
 			PreparedStatement dropTables = conn.prepareStatement("DROP TABLE `Books`.`authorISBN`, `Books`.`authors`, `Books`.`publishers`, `Books`.`titles`;");
 			dropTables.executeUpdate();
 			
 			// Creates titles table with PRIMARY KEY ISBN, title, editionNumber, year, publisherID, and price
-			PreparedStatement createTitles = conn.prepareStatement("CREATE TABLE IF NOT EXISTS titles(isbn CHAR(10) NOT NULL, editionNumber INTEGER NOT NULL, year CHAR(4) NOT NULL, price INTEGER NOT NULL, title VARCHAR(500) NOT NULL, publisherID INTEGER NOT NULL, PRIMARY KEY(isbn))");
+			PreparedStatement createTitles = conn.prepareStatement("CREATE TABLE IF NOT EXISTS titles(isbn CHAR(10) NOT NULL, editionNumber INTEGER NOT NULL, year CHAR(4) NOT NULL, price DECIMAL(8, 2) NOT NULL, title VARCHAR(500) NOT NULL, publisherID INTEGER NOT NULL, PRIMARY KEY(isbn))");
 			createTitles.executeUpdate();
 			
 			// Creates an authors table with PRIMARY KEY authorID, firstName, and lastName
@@ -309,7 +291,7 @@ public class Driver {
 			String driver = "com.mysql.jdbc.Driver";
 			String url = "jdbc:mysql://localhost:3306/Books";
 			String username = "root";
-			String password = "password";
+			String password = "123"; //EDIT FOR LOCAL CHANGES TO YOUR LOCAL PW FOR MYSQL!!!!!!!!!!!!!!!!!!!!!!!!!
 			Class.forName(driver);
 			
 			Connection conn = DriverManager.getConnection(url, username, password);
@@ -318,5 +300,27 @@ public class Driver {
 			System.out.println(e);
 		}
 		return null;
+	}
+
+	// Executes all queries
+	public static void main(String[] args) throws Exception{
+		createTable();
+		post();
+		System.out.println("Select all authors");
+		getAuthors();
+		System.out.println("Select all publishers");
+		getPublishers();
+		System.out.println("Select a specific publisher");
+		getSpecificPublishers("Amacom");
+		System.out.println("Add new author");
+		addNewAuthor();
+		System.out.println("Update existing info for author");
+		updateAuthor();	
+		System.out.println("Add new publisher");
+		addNewPublisher();
+		System.out.println("Edit existing info for publisher");
+		updatePublisher();
+		System.out.println("Add new title for an author");
+		addNewTitle();
 	}
 }
