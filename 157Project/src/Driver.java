@@ -1,9 +1,6 @@
-package jdbcdemo;
 import java.sql.*;
 
 public class Driver {
-
-	//I farted - Vivian 
 
 	// Queries for adding titles table
 	static String titles[] = {
