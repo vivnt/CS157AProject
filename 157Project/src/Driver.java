@@ -262,23 +262,29 @@ public class Driver {
 			//PreparedStatement dropTables = conn.prepareStatement("DROP TABLE `Books`.`authorISBN`, `Books`.`authors`, `Books`.`publishers`, `Books`.`titles`;");
 			//dropTables.executeUpdate();
 			
-			// Creates titles table with PRIMARY KEY ISBN, title, editionNumber, year, publisherID, and price
-			PreparedStatement createTitles = conn.prepareStatement("CREATE TABLE IF NOT EXISTS titles(isbn CHAR(10) NOT NULL, editionNumber INTEGER NOT NULL, year CHAR(4) NOT NULL, price DECIMAL(8,2) NOT NULL, title VARCHAR(500) NOT NULL, publisherID INTEGER NOT NULL, PRIMARY KEY(isbn), FOREIGN KEY (publisherID) REFERENCES publishers(publisherID))");
-			createTitles.executeUpdate();
-			
 			// Creates an authors table with PRIMARY KEY authorID, firstName, and lastName
 			PreparedStatement createAuthors = conn.prepareStatement("CREATE TABLE IF NOT EXISTS authors(authorID INTEGER AUTO_INCREMENT NOT NULL, firstName CHAR(20) NOT NULL, lastName CHAR(20) NOT NULL, PRIMARY KEY(authorID))");
 			createAuthors.executeUpdate();
 			
-			// Creates an AuthorISBN table with authorID and isbn
-			PreparedStatement createAuthorISBN = conn.prepareStatement("CREATE TABLE IF NOT EXISTS authorISBN(authorID INTEGER NOT NULL, isbn CHAR(10) NOT NULL), FOREIGN KEY (authorID) REFERENCES authors(authorID), FOREIGN KEY (isbn) REFERENCES titles(isbn))");
-			createAuthorISBN.executeUpdate();
 			
 			// Creates an publishers table with PRIMARY KEY publisherID and publisherName
 			// Needed to make publisherID PRIMARY KEY because of auto increment
 			// Not specified in project requirements
 			PreparedStatement createPublishers = conn.prepareStatement("CREATE TABLE IF NOT EXISTS publishers(publisherID INTEGER AUTO_INCREMENT NOT NULL, publisherName CHAR(100) NOT NULL, PRIMARY KEY(publisherID))");
-			createPublishers.executeUpdate();
+			createPublishers.executeUpdate();						
+						
+						
+			// Creates titles table with PRIMARY KEY ISBN, title, editionNumber, year, publisherID, and price
+			PreparedStatement createTitles = conn.prepareStatement("CREATE TABLE IF NOT EXISTS titles(isbn CHAR(10) NOT NULL, editionNumber INTEGER NOT NULL, year CHAR(4) NOT NULL, price DECIMAL(8,2) NOT NULL, title VARCHAR(500) NOT NULL, publisherID INTEGER NOT NULL, PRIMARY KEY(isbn), FOREIGN KEY (publisherID) REFERENCES publishers(publisherID))");
+			createTitles.executeUpdate();
+			
+			// Creates an AuthorISBN table with authorID and isbn
+			PreparedStatement createAuthorISBN = conn.prepareStatement("CREATE TABLE IF NOT EXISTS authorISBN(authorID INTEGER NOT NULL, isbn CHAR(10) NOT NULL, FOREIGN KEY (authorID) REFERENCES authors(authorID), FOREIGN KEY (isbn) REFERENCES titles(isbn))");
+			createAuthorISBN.executeUpdate();
+			
+			
+			
+	
 		}
 		catch (Exception e) {
 			System.out.println(e);
@@ -295,6 +301,7 @@ public class Driver {
 			Class.forName(driver);
 			
 			Connection conn = DriverManager.getConnection(url, username, password);
+
 			return conn;
 		} catch (Exception e) {
 			System.out.println(e);
