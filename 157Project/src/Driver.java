@@ -259,11 +259,11 @@ public class Driver {
 			// Used to drop existing tables
 			// Best used during testing
 //USED FOR TESTING***************************************			
-			PreparedStatement dropTables = conn.prepareStatement("DROP TABLE `Books`.`authorISBN`, `Books`.`authors`, `Books`.`publishers`, `Books`.`titles`;");
-			dropTables.executeUpdate();
+			//PreparedStatement dropTables = conn.prepareStatement("DROP TABLE `Books`.`authorISBN`, `Books`.`authors`, `Books`.`publishers`, `Books`.`titles`;");
+			//dropTables.executeUpdate();
 			
 			// Creates titles table with PRIMARY KEY ISBN, title, editionNumber, year, publisherID, and price
-			PreparedStatement createTitles = conn.prepareStatement("CREATE TABLE IF NOT EXISTS titles(isbn CHAR(10) NOT NULL, editionNumber INTEGER NOT NULL, year CHAR(4) NOT NULL, price DECIMAL(8,-2) NOT NULL, title VARCHAR2(500) NOT NULL, publisherID INTEGER NOT NULL, PRIMARY KEY(isbn), FOREIGN KEY (publisherID) REFERENCES publishers(publisherID))");
+			PreparedStatement createTitles = conn.prepareStatement("CREATE TABLE IF NOT EXISTS titles(isbn CHAR(10) NOT NULL, editionNumber INTEGER NOT NULL, year CHAR(4) NOT NULL, price DECIMAL(8,2) NOT NULL, title VARCHAR(500) NOT NULL, publisherID INTEGER NOT NULL, PRIMARY KEY(isbn), FOREIGN KEY (publisherID) REFERENCES publishers(publisherID))");
 			createTitles.executeUpdate();
 			
 			// Creates an authors table with PRIMARY KEY authorID, firstName, and lastName
@@ -291,7 +291,7 @@ public class Driver {
 			String driver = "com.mysql.jdbc.Driver";
 			String url = "jdbc:mysql://localhost:3306/Books";
 			String username = "root";
-			String password = "123"; //EDIT FOR LOCAL CHANGES TO YOUR LOCAL PW FOR MYSQL!!!!!!!!!!!!!!!!!!!!!!!!!
+			String password = "xuanho69"; //EDIT FOR LOCAL CHANGES TO YOUR LOCAL PW FOR MYSQL!!!!!!!!!!!!!!!!!!!!!!!!!
 			Class.forName(driver);
 			
 			Connection conn = DriverManager.getConnection(url, username, password);
