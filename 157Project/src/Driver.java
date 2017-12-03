@@ -33,7 +33,7 @@ public class Driver {
 			//create author table
 			stm.execute("CREATE TABLE `authors` (`authorID` INT(11) NOT NULL AUTO_INCREMENT, `firstName` VARCHAR(20) NOT NULL, `lastName` VARCHAR(20) NOT NULL, PRIMARY KEY (`authorID`))");
 			//create publisher table
-			stm.execute("CREATE TABLE `publishers` (`publisherID` INT(11) NOT NULL AUTO_INCREMENT, `publisherNadisney me` VARCHAR(100) NOT NULL, PRIMARY KEY (`publisherID`))");
+			stm.execute("CREATE TABLE `publishers` (`publisherID` INT(11) NOT NULL AUTO_INCREMENT, `publisherName` VARCHAR(100) NOT NULL, PRIMARY KEY (`publisherID`))");
 			//create title table
 			stm.execute("CREATE TABLE `titles` (`isbn` VARCHAR(10) NOT NULL, `editionNumber` INT(11) NOT NULL, `year` VARCHAR(4) NOT NULL, `publisherID` INT(11) NOT NULL, `price` DECIMAL(8,2) NOT NULL, `title` VARCHAR(500) NOT NULL, PRIMARY KEY (`isbn`), INDEX `publisher_ID_FK_idx` (`publisherID` ASC), CONSTRAINT `publisher_ID_FK` FOREIGN KEY (`publisherID`) REFERENCES `publishers` (`publisherID`) ON DELETE NO ACTION ON UPDATE NO ACTION)");
 			//create authorISBN table
