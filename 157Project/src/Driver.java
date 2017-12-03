@@ -1,3 +1,5 @@
+// package jdbcdemo;
+
 import java.sql.*;
 
 public class Driver {
@@ -42,7 +44,7 @@ public class Driver {
 			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Portfolio')",
 			"INSERT IGNORE INTO publishers(publisherName) VALUES ('HarperOne')",
 			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Atria Books')",
-			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Arthur A. Levine Books')"
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Arthur A. Levine Books')",
 			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Pearson')",
 			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Informa')",
 			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Mondadori')",
@@ -281,36 +283,36 @@ public class Driver {
 		}
 	}
 
-	// Initializes all four tables with data
-	// Uses queries above to execute each query to initialize data
-	public static void post() throws Exception {
-		try {
-			Connection conn = getConnection();
-			
-			for (int i=0; i < 20; i++){
-				PreparedStatement insert = conn.prepareStatement(titles[i]);
-				insert.executeUpdate();
-			}
-			
-			for (int i=0; i < 20; i++){
-				PreparedStatement insert = conn.prepareStatement(publishers[i]);
-				insert.executeUpdate();
-			}
-			
-			for (int i=0; i < 20; i++){
-				PreparedStatement insert = conn.prepareStatement(authors[i]);
-				insert.executeUpdate();
-			}
-			
-			for (int i=0; i < 20; i++){
-				PreparedStatement insert = conn.prepareStatement(authorISBN[i]);
-				insert.executeUpdate();
-			}
-		}
-		catch (Exception e){
-			System.out.println(e);
-		}
-	}
+//	// Initializes all four tables with data
+//	// Uses queries above to execute each query to initialize data
+//	public static void post() throws Exception {
+//		try {
+//			Connection conn = getConnection();
+//			
+//			for (int i=0; i < 20; i++){
+//				PreparedStatement insert = conn.prepareStatement(titles[i]);
+//				insert.executeUpdate();
+//			}
+//			
+//			for (int i=0; i < 20; i++){
+//				PreparedStatement insert = conn.prepareStatement(publishers[i]);
+//				insert.executeUpdate();
+//			}
+//			
+//			for (int i=0; i < 20; i++){
+//				PreparedStatement insert = conn.prepareStatement(authors[i]);
+//				insert.executeUpdate();
+//			}
+//			
+//			for (int i=0; i < 20; i++){
+//				PreparedStatement insert = conn.prepareStatement(authorISBN[i]);
+//				insert.executeUpdate();
+//			}
+//		}
+//		catch (Exception e){
+//			System.out.println(e);
+//		}
+//	}
 	
 	
 	// Creates a connection with the database Books
@@ -334,57 +336,75 @@ public class Driver {
 		String titles[] = {
 				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0743250974','1','2004','12.20','The 7 Habits','6')",
 				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0814436714','1','2017','20.75','Ask More Questions','7')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1250093465','1','2017','12.20','The Code of Trust','9')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1501124021','1','2017','12.20','Principles: Life and Work','10')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0062457713','1','2016','12.20','The Subtle Art','12')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0375869026','1','2012','12.20','Wonder','1')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0143111728','1','2017','12.20','Find your why','11')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1623156122','1','2016','12.20','The Instant Pot','0')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0545392551','1','2012','12.20','Giraffes cant dance','2')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1250093465','1','2017','41.20','The Code of Trust','9')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1501124021','1','2017','1314.20','Principles: Life and Work','10')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0062457713','1','2016','245.20','The Subtle Art','12')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0375869026','1','2012','1.20','Wonder','1')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0143111728','1','2017','65.20','Find your why','11')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1623156122','1','2016','34.20','The Instant Pot','0')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0545392551','1','2012','23.20','Giraffes cant dance','2')",
 				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0316512583','1','2017','12.20','Obama','3')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0385514239','1','2017','12.20','Origin','4')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0399593489','1','2017','12.20','The Midnight Line','5')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1632861054','1','2017','12.20','A More Beautiful Question','8')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('150117813X','1','2017','12.20','In the Midst of Winter','13')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0545791324','1','2016','12.20','Harry Potter','14')"
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0385514239','1','2017','76.20','Origin','4')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0399593489','1','2017','65.20','The Midnight Line','5')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1632861054','1','2017','43.20','A More Beautiful Question','8')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('150117813X','1','2017','35.20','In the Midst of Winter','13')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0545791324','1','2016','99.20','Harry Potter','14')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0385514200','1','1995','23.24','Alice','3')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1300523489','1','2005','65.02','The Wolf','15')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('2400861054','1','2017','24.65','My Life','11')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('000137213X','1','2003','46.78','Basketball Time','23')",
+				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1115741315','1','2010','100.99','Lives Matter','1')"
+
+
+
 		};
 		
 		// Queries for adding publishers table
 		String publishers[] = {
-				"INSERT IGNORE INTO publishers(publisherID,publisherName) VALUES ('0','Rockridge Press')",
-				"INSERT IGNORE INTO publishers(publisherID,publisherName) VALUES ('1','Knopf Books for Young Reader')",
-				"INSERT IGNORE INTO publishers(publisherID,publisherName) VALUES ('2','Cartwheel Books')",
-				"INSERT IGNORE INTO publishers(publisherID,publisherName) VALUES ('3','Brown and Company')",
-				"INSERT IGNORE INTO publishers(publisherID,publisherName) VALUES ('4','Doubleday')",
-				"INSERT IGNORE INTO publishers(publisherID,publisherName) VALUES ('5','Delacorte Press')",
-				"INSERT IGNORE INTO publishers(publisherID,publisherName) VALUES ('6','Touchstone')",
-				"INSERT IGNORE INTO publishers(publisherID,publisherName) VALUES ('7','Amacom')",
-				"INSERT IGNORE INTO publishers(publisherID,publisherName) VALUES ('8','Bloomsbury USA')",
-				"INSERT IGNORE INTO publishers(publisherID,publisherName) VALUES ('9','St. Martin Press')",
-				"INSERT IGNORE INTO publishers(publisherID,publisherName) VALUES ('10','Simon and Schuster')",
-				"INSERT IGNORE INTO publishers(publisherID,publisherName) VALUES ('11','Portfolio')",
-				"INSERT IGNORE INTO publishers(publisherID,publisherName) VALUES ('12','HarperOne')",
-				"INSERT IGNORE INTO publishers(publisherID,publisherName) VALUES ('13','Atria Books')",
-				"INSERT IGNORE INTO publishers(publisherID,publisherName) VALUES ('14','Arthur A. Levine Books')"
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Rockridge Press')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Knopf Books for Young Reader')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Cartwheel Books')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Brown and Company')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Doubleday')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Delacorte Press')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Touchstone')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Amacom')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Bloomsbury USA')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('St. Martin Press')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Simon and Schuster')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Portfolio')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('HarperOne')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Atria Books')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Arthur A. Levine Books')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Pearson')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Informa')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Mondadori')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Wiley')",
+				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Cornelsen')",
 		};
 		
 		// Queries for adding authors table
 		String authors[] = {
-				"INSERT IGNORE INTO authors(authorID,firstName, lastName) VALUES ('1','Laurel','Randolph')",
-				"INSERT IGNORE INTO authors(authorID,firstName, lastName) VALUES ('2','Rj','Palacio')",
-				"INSERT IGNORE INTO authors(authorID,firstName, lastName) VALUES ('3','Giles','Andreae')",
-				"INSERT IGNORE INTO authors(authorID,firstName, lastName) VALUES ('4','Pete','Randolph')",
-				"INSERT IGNORE INTO authors(authorID,firstName, lastName) VALUES ('5','Dan','Brown')",
-				"INSERT IGNORE INTO authors(authorID,firstName, lastName) VALUES ('6','Lee','Child')",
-				"INSERT IGNORE INTO authors(authorID,firstName, lastName) VALUES ('7','Stephen','Covey')",
-				"INSERT IGNORE INTO authors(authorID,firstName, lastName) VALUES ('8','Frank','Sesno')",
-				"INSERT IGNORE INTO authors(authorID,firstName, lastName) VALUES ('9','Warren','Berger')",
-				"INSERT IGNORE INTO authors(authorID,firstName, lastName) VALUES ('10','Robin','Dreeke')",
-				"INSERT IGNORE INTO authors(authorID,firstName, lastName) VALUES ('11','Ray','Dalio')",
-				"INSERT IGNORE INTO authors(authorID,firstName, lastName) VALUES ('12','Simon','Sinek')",
-				"INSERT IGNORE INTO authors(authorID,firstName, lastName) VALUES ('13','Mark','Manson')",
-				"INSERT IGNORE INTO authors(authorID,firstName, lastName) VALUES ('14','Isabel','Allende')",
-				"INSERT IGNORE INTO authors(authorID,firstName, lastName) VALUES ('15','JK','Rowling')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Laurel','Randolph')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('RJ','Palacio')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Giles','Andreae')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Pete','Randolph')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Dan','Brown')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Lee','Child')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Stephen','Covey')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Frank','Sesno')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Warren','Berger')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Robin','Dreeke')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Ray','Dalio')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Simon','Sinek')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Mark','Manson')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Isabel','Allende')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('JK','Rowling')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Lebron','James')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Kevin','Durrant')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Jeremy','Lin')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Yao','Ming')",
+				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Stephen','Curry')",
 		};
 		
 		// Queries for adding authorISBN table
@@ -403,24 +423,29 @@ public class Driver {
 				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('11','0143111728')",
 				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('12','0062457713')",
 				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('13','150117813X')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('14','0545791324')",
+				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('13','0545791324')",
+				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('14','1235124021')",
+				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('15','0523131728')",
+				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('16','1063454613')",
+				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('17','1524387133')",
+				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('18','1336745324')",
 		};
 		
 		try {
 			
 			//insert author data
-			for (int i=0; i < 15; i++){
+			for (int i=0; i < 20; i++){
 				PreparedStatement insert = conn.prepareStatement(authors[i]);
 				insert.executeUpdate();	
 			}System.out.println("authors data");
 			
 			//insert publishers data
-			for (int i=0; i < 15; i++){
+			for (int i=0; i < 20; i++){
 				PreparedStatement insert = conn.prepareStatement(publishers[i]);
 				insert.executeUpdate();
 			}System.out.println("publishers data inserted");
 			//insert titles data
-			for (int i=0; i < 15; i++){
+			for (int i=0; i < 20; i++){
 				PreparedStatement insert = conn.prepareStatement(titles[i]);
 				insert.executeUpdate();
 				
@@ -428,7 +453,7 @@ public class Driver {
 			
 			
 			//insert authorISBN
-			for (int i=0; i < 15; i++){
+			for (int i=1; i <= 20; i++){
 				PreparedStatement insert = conn.prepareStatement(authorISBN[i]);
 				insert.executeUpdate();
 			}
@@ -529,7 +554,7 @@ public class Driver {
 			ResultSet result = statement.executeQuery();
 			
 			//print out 
-			int count = 0;
+			int count = 1;
 			String firstName, lastName;
 			
 			while(result.next()){
@@ -550,11 +575,14 @@ public class Driver {
 	}
 	// Executes all queries
 	public static void main(String[] args) throws Exception{
-		createTable();
-		post();
+		// createTable();
+		// post();
+		
 		// Get Connection
 		Connection connect = getConnection();
 		// Reset Database
+		//For first time RUN attempt, make sure you already have a books database because it will try to Delete it first. 
+		//If books not there, it will output Can't Connect to DB
 		resetDatabase(connect);
 		// Create Tables
 		createTable(connect);
