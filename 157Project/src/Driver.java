@@ -92,14 +92,13 @@ public class Driver {
 			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('11','0143111728')",
 			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('12','0062457713')",
 			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('13','150117813X')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('13','0545791324')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('14','1235124021')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('15','0523131728')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('16','1063454613')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('17','1524387133')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('18','1336745324')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('19','1830295538')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('20','0028475662')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('14','0545791324')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('15','1235124021')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('16','0523131728')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('17','1063454613')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('18','1524387133')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('19','1336745324')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('20','1830295538')",
 	};
 			
 	public static void resetDatabase(Connection conn){
@@ -210,10 +209,10 @@ public class Driver {
 	public static void addNewTitle() throws Exception {
 		try {
 			Connection conn = getConnection();
-			String query = "INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0143039431','1','2006','10','The Grapes of Wrath','6')";
+			String query = "INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('21','0143039431')";
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.executeUpdate();
-			String query2 = "INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('21','0143039431')";
+			String query2 = "INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0143039431','1','2006','10','The Grapes of Wrath','6')";
 			PreparedStatement statement2 = conn.prepareStatement(query2);
 			statement2.executeUpdate();
 		}
@@ -304,29 +303,28 @@ public class Driver {
 	public static void insertData(Connection conn) throws Exception {		
 		try {
 			// Insert author table
-			for (int i=0; i < 20; i++){
+			for (int i=0; i < authors.length; i++){
 				PreparedStatement insert = conn.prepareStatement(authors[i]);
 				insert.executeUpdate();	
 			}
 			
 			// Insert publishers table
-			for (int i=0; i < 20; i++){
+			for (int i=0; i < publishers.length; i++){
 				PreparedStatement insert = conn.prepareStatement(publishers[i]);
 				insert.executeUpdate();
 			}
 			
 			// Insert titles data
-			for (int i=0; i < 20; i++){
+			for (int i=0; i < titles.length; i++){
 				PreparedStatement insert = conn.prepareStatement(titles[i]);
 				insert.executeUpdate();
 			}
 			
 			// Insert authorISBN
-			for (int i=1; i <= 20; i++){
+			for (int i=1; i < authorISBN.length; i++){
 				PreparedStatement insert = conn.prepareStatement(authorISBN[i]);
 				insert.executeUpdate();
 			}
-			System.out.println("authorISBN table inserted");
 		}
 		catch (Exception e){
 			System.out.println(e);
