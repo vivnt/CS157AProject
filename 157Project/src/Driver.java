@@ -3,11 +3,108 @@
 import java.sql.*;
 
 public class Driver {
+
+	// Queries for adding titles table
+	static String titles[] = {
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0743250974','1','2004','12.20','The 7 Habits','6')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0814436714','1','2017','20.75','Ask More Questions','7')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1250093465','1','2017','41.20','The Code of Trust','9')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1501124021','1','2017','1314.20','Principles: Life and Work','10')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0062457713','1','2016','245.20','The Subtle Art','12')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0375869026','1','2012','1.20','Wonder','1')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0143111728','1','2017','65.20','Find your why','11')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1623156122','1','2016','34.20','The Instant Pot','0')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0545392551','1','2012','23.20','Giraffes cant dance','2')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0316512583','1','2017','12.20','Obama','3')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0385514239','1','2017','76.20','Origin','4')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0399593489','1','2017','65.20','The Midnight Line','5')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1632861054','1','2017','43.20','A More Beautiful Question','8')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('150117813X','1','2017','35.20','In the Midst of Winter','13')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0545791324','1','2016','99.20','Harry Potter','14')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0385514200','1','1995','23.24','Alice','3')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1300523489','1','2005','65.02','The Wolf','15')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('2400861054','1','2017','24.65','My Life','11')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('000137213X','1','2003','46.78','Basketball Time','23')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1115741315','1','2010','100.99','Lives Matter','1')"
+	};
 	
+	// Queries for adding publishers table
+	static String publishers[] = {
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Rockridge Press')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Knopf Books for Young Reader')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Cartwheel Books')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Brown and Company')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Doubleday')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Delacorte Press')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Touchstone')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Amacom')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Bloomsbury USA')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('St. Martin Press')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Simon and Schuster')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Portfolio')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('HarperOne')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Atria Books')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Arthur A. Levine Books')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Pearson')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Informa')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Mondadori')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Wiley')",
+			"INSERT IGNORE INTO publishers(publisherName) VALUES ('Cornelsen')",
+	};
+	
+	// Queries for adding authors table
+	static String authors[] = {
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Laurel','Randolph')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('RJ','Palacio')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Giles','Andreae')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Pete','Randolph')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Dan','Brown')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Lee','Child')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Stephen','Covey')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Frank','Sesno')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Warren','Berger')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Robin','Dreeke')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Ray','Dalio')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Simon','Sinek')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Mark','Manson')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Isabel','Allende')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('JK','Rowling')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Lebron','James')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Kevin','Durrant')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Jeremy','Lin')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Yao','Ming')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Stephen','Curry')",
+	};
+	
+	// Queries for adding authorISBN table
+	static String authorISBN[] = {
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('0','1623156122')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('1','0375869026')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('2','0545392551')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('3','0316512583')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('4','0385514239')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('5','0399593489')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('6','0743250974')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('7','0814436714')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('8','1632861054')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('9','1250093465')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('10','1501124021')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('11','0143111728')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('12','0062457713')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('13','150117813X')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('13','0545791324')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('14','1235124021')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('15','0523131728')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('16','1063454613')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('17','1524387133')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('18','1336745324')",
+	};
+			
 	public static void resetDatabase(Connection conn){
 		try {
 			Statement stm = conn.createStatement();
-			stm.execute("DROP DATABASE Books"); //drop the database everytime run the code. and create it again
+			//drop the database every time run the code. and create it again
+			stm.execute("DROP DATABASE Books");
 		} catch(Exception e) {
 			
 		}
@@ -16,7 +113,6 @@ public class Driver {
 			Statement stm = conn.createStatement();
 			stm.execute("CREATE DATABASE Books");
 			stm.execute("USE Books");
-			System.out.println("Connected to Database: Books...");
 		}catch(Exception e){
 			e.printStackTrace();
 			System.out.println("Cannot connect to the database");
@@ -39,12 +135,8 @@ public class Driver {
 			//create authorISBN table
 			stm.execute("CREATE TABLE `authorISBN` (`authorID` INT(11) NOT NULL, `isbn` VARCHAR(10) NOT NULL, INDEX `ID_FK_idx` (`authorID` ASC), INDEX `title_fk_idx` (`isbn` ASC), CONSTRAINT `ID_FK` FOREIGN KEY (`authorID`) REFERENCES `authors` (`authorID`) ON DELETE NO ACTION ON UPDATE NO ACTION, CONSTRAINT `title_fk` FOREIGN KEY (`isbn`) REFERENCES `titles` (`isbn`) ON DELETE NO ACTION ON UPDATE NO ACTION)");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
-			System.out.println("tables created");
 		}
-	
 	}
 	
 	// Update a current existing author in authors table
@@ -173,7 +265,7 @@ public class Driver {
 			Connection conn = getConnection();
 			String query = "SELECT firstName, lastName FROM authors ORDER BY lastName, firstName;";
 			PreparedStatement statement = conn.prepareStatement(query);
-			
+		
 			ResultSet result = statement.executeQuery();
 			
 			while(result.next()){
@@ -192,7 +284,7 @@ public class Driver {
 			String driver = "com.mysql.jdbc.Driver";
 			String url = "jdbc:mysql://localhost:3306/Books";
 			String username = "root";
-			String password = "123"; //EDIT FOR LOCAL CHANGES TO YOUR LOCAL PW FOR MYSQL!!!!!!!!!!!!!!!!!!!!!!!!!
+			String password = "password"; //EDIT FOR LOCAL CHANGES TO YOUR LOCAL PW FOR MYSQL!!!!!!!!!!!!!!!!!!!!!!!!!
 			Class.forName(driver);
 			
 			Connection conn = DriverManager.getConnection(url, username, password);
@@ -202,128 +294,28 @@ public class Driver {
 		}
 		return null;
 	}
-	public static void insertData(Connection conn) throws Exception {
-		// Queries for adding titles table
-		String titles[] = {
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0743250974','1','2004','12.20','The 7 Habits','6')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0814436714','1','2017','20.75','Ask More Questions','7')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1250093465','1','2017','41.20','The Code of Trust','9')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1501124021','1','2017','1314.20','Principles: Life and Work','10')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0062457713','1','2016','245.20','The Subtle Art','12')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0375869026','1','2012','1.20','Wonder','1')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0143111728','1','2017','65.20','Find your why','11')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1623156122','1','2016','34.20','The Instant Pot','0')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0545392551','1','2012','23.20','Giraffes cant dance','2')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0316512583','1','2017','12.20','Obama','3')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0385514239','1','2017','76.20','Origin','4')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0399593489','1','2017','65.20','The Midnight Line','5')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1632861054','1','2017','43.20','A More Beautiful Question','8')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('150117813X','1','2017','35.20','In the Midst of Winter','13')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0545791324','1','2016','99.20','Harry Potter','14')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0385514200','1','1995','23.24','Alice','3')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1300523489','1','2005','65.02','The Wolf','15')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('2400861054','1','2017','24.65','My Life','11')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('000137213X','1','2003','46.78','Basketball Time','23')",
-				"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1115741315','1','2010','100.99','Lives Matter','1')"
-
-
-
-		};
-		
-		// Queries for adding publishers table
-		String publishers[] = {
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Rockridge Press')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Knopf Books for Young Reader')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Cartwheel Books')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Brown and Company')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Doubleday')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Delacorte Press')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Touchstone')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Amacom')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Bloomsbury USA')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('St. Martin Press')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Simon and Schuster')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Portfolio')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('HarperOne')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Atria Books')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Arthur A. Levine Books')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Pearson')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Informa')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Mondadori')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Wiley')",
-				"INSERT IGNORE INTO publishers(publisherName) VALUES ('Cornelsen')",
-		};
-		
-		// Queries for adding authors table
-		String authors[] = {
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Laurel','Randolph')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('RJ','Palacio')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Giles','Andreae')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Pete','Randolph')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Dan','Brown')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Lee','Child')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Stephen','Covey')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Frank','Sesno')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Warren','Berger')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Robin','Dreeke')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Ray','Dalio')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Simon','Sinek')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Mark','Manson')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Isabel','Allende')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('JK','Rowling')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Lebron','James')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Kevin','Durrant')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Jeremy','Lin')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Yao','Ming')",
-				"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Stephen','Curry')",
-		};
-		
-		// Queries for adding authorISBN table
-		String authorISBN[] = {
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('0','1623156122')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('1','0375869026')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('2','0545392551')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('3','0316512583')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('4','0385514239')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('5','0399593489')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('6','0743250974')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('7','0814436714')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('8','1632861054')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('9','1250093465')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('10','1501124021')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('11','0143111728')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('12','0062457713')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('13','150117813X')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('13','0545791324')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('14','1235124021')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('15','0523131728')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('16','1063454613')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('17','1524387133')",
-				"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('18','1336745324')",
-		};
-		
+	
+	public static void insertData(Connection conn) throws Exception {		
 		try {
-			
-			//insert author data
+
+			// Insert author table
 			for (int i=0; i < 20; i++){
 				PreparedStatement insert = conn.prepareStatement(authors[i]);
 				insert.executeUpdate();	
-			}System.out.println("authors data");
+			}
 			
-			//insert publishers data
+			// Insert publishers table
 			for (int i=0; i < 20; i++){
 				PreparedStatement insert = conn.prepareStatement(publishers[i]);
 				insert.executeUpdate();
-			}System.out.println("publishers data inserted");
-			//insert titles data
+			}
+			// Insert titles data
 			for (int i=0; i < 20; i++){
 				PreparedStatement insert = conn.prepareStatement(titles[i]);
 				insert.executeUpdate();
-				
-			}System.out.println("titles data inserted");
+			}
 			
-			
-			//insert authorISBN
+			// Insert authorISBN
 			for (int i=1; i <= 20; i++){
 				PreparedStatement insert = conn.prepareStatement(authorISBN[i]);
 				insert.executeUpdate();
@@ -335,121 +327,12 @@ public class Driver {
 		}
 	}
 	
-	public static void displayData(Connection conn) throws Exception {
-		try {
-			int counter = 1;
-			
-			String query = "SELECT * FROM authors;";
-			PreparedStatement statement = conn.prepareStatement(query);
-			
-			ResultSet result = statement.executeQuery();
-			System.out.println("authors table");
-			
-			while(result.next()){
-				System.out.println(counter + ": " + result.getString(1) + " " + result.getString(2) + " ");
-
-				counter++;
-			}
-		}
-		catch (Exception e){
-			System.out.println(e);
-		}
-		
-		try {
-			int counter = 1;
-			
-			String query = "SELECT * FROM publishers;";
-			PreparedStatement statement = conn.prepareStatement(query);
-			
-			ResultSet result = statement.executeQuery();
-			System.out.println("publishers table");
-			
-			while(result.next()){
-				System.out.println(counter + ": " + result.getString(1) + " " + result.getString(2) + " ");
-
-				counter++;
-			}
-		}
-		catch (Exception e){
-			System.out.println(e);
-		}
-		
-		try {
-			int counter = 1;
-			
-			String query = "SELECT * FROM authorISBN;";
-			PreparedStatement statement = conn.prepareStatement(query);
-			
-			ResultSet result = statement.executeQuery();
-			System.out.println("authorISBN table");
-			
-			while(result.next()){
-				System.out.println(counter + ": " + result.getString(1) + " " + result.getString(2) + " ");
-
-				counter++;
-			}
-		}
-		catch (Exception e){
-			System.out.println(e);
-		}
-		
-		try {
-			int counter = 1;
-			
-			String query = "SELECT * FROM titles;";
-			PreparedStatement statement = conn.prepareStatement(query);
-			
-			ResultSet result = statement.executeQuery();
-			System.out.println("titles table");
-			
-			while(result.next()){
-				System.out.println(counter + ": " + result.getString(1) + " " + result.getString(2) + " "+ result.getString(3) + " " + result.getString(4) + " " + result.getString(5) + " " + result.getString(6) + " ");
-
-				counter++;
-			}
-		}
-		catch (Exception e){
-			System.out.println(e);
-		}
-
-    }
-	
-	public static void doSqlStatement(Connection conn){
-		//SELECT lastName firstName From authors ORDER BY letter ASC
-		System.out.println("Now display the result of SELECT lastName firstName From authors");
-		try {
-			//Statement stm = conn.createStatement();
-			//stm.execute("SELECT firstName, lastName FROM authors ORDER BY lastName, firstName;");
-			PreparedStatement statement = conn.prepareStatement("SELECT firstName, lastName FROM authors ORDER BY lastName ASC, firstName ASC;");
-			
-			ResultSet result = statement.executeQuery();
-			
-			//print out 
-			int count = 1;
-			String firstName, lastName;
-			
-			while(result.next()){
-				firstName = result.getString("firstName");
-				lastName = result.getString("lastName");
-				System.out.println(count + " " + firstName   + " " + lastName );
-				count++;
-				
-			}
-			//result.close();
-
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
-		
-		
-	}
 	// Executes all queries
 	public static void main(String[] args) throws Exception{
 
 		// Get Connection
 		Connection connect = getConnection();
-		// Reset Database
+		//Reset Database
 		//For first time RUN attempt, make sure you already have a books database because it will try to Delete it first. 
 		//If books not there, it will output Can't Connect to DB
 		resetDatabase(connect);
@@ -457,8 +340,6 @@ public class Driver {
 		createTable(connect);
 		// Add Demo Data
 		insertData(connect);
-		//displayData(connect);
-		doSqlStatement(connect);
 		
 		System.out.println("Select all authors");
 		getAuthors();
