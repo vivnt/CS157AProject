@@ -1,5 +1,3 @@
-// package jdbcdemo;
-
 import java.sql.*;
 
 public class Driver {
