@@ -197,6 +197,7 @@ public class Driver {
 			String query = "INSERT IGNORE INTO authors(firstName, lastName) VALUES ('John','Steinbeck')";
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.executeUpdate();
+			
 			System.out.println("After adding new Author");	
 			getAuthors();
 		}
@@ -212,6 +213,9 @@ public class Driver {
 			String query = "INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0143039431','1','2006','10','The Grapes of Wrath','6')";
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.executeUpdate();
+			String query2 = "INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('21','0143039431')";
+			PreparedStatement statement2 = conn.prepareStatement(query2);
+			statement2.executeUpdate();
 		}
 		catch (Exception e){
 			System.out.println(e);
@@ -299,7 +303,6 @@ public class Driver {
 	
 	public static void insertData(Connection conn) throws Exception {		
 		try {
-
 			// Insert author table
 			for (int i=0; i < 20; i++){
 				PreparedStatement insert = conn.prepareStatement(authors[i]);
@@ -311,6 +314,7 @@ public class Driver {
 				PreparedStatement insert = conn.prepareStatement(publishers[i]);
 				insert.executeUpdate();
 			}
+			
 			// Insert titles data
 			for (int i=0; i < 20; i++){
 				PreparedStatement insert = conn.prepareStatement(titles[i]);
@@ -334,9 +338,7 @@ public class Driver {
 
 		// Get Connection
 		Connection connect = getConnection();
-		//Reset Database
-		//For first time RUN attempt, make sure you already have a books database because it will try to Delete it first. 
-		//If books not there, it will output Can't Connect to DB
+		// Reset Database to make sure the DB is clean
 		resetDatabase(connect);
 		// Create Tables
 		createTable(connect);
@@ -348,7 +350,7 @@ public class Driver {
 		System.out.println("Select all publishers");
 		getPublishers();
 		System.out.println("Select a specific publisher");
-		getSpecificPublishers("Amacom");
+		getSpecificPublishers("s");
 		System.out.println("Add new author");
 		addNewAuthor();
 		System.out.println("Update existing info for author");
