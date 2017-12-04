@@ -68,7 +68,7 @@ public class Driver {
 			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Isabel','Allende')",
 			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('JK','Rowling')",
 			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Lebron','James')",
-			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Kevin','Durrant')",
+			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Kevin','Durant')",
 			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Jeremy','Lin')",
 			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Yao','Ming')",
 			"INSERT IGNORE INTO authors(firstName, lastName) VALUES ('Stephen','Curry')",
@@ -76,27 +76,26 @@ public class Driver {
 	
 	// Queries for adding authorISBN table
 	static String authorISBN[] = {
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('0','1623156122')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('1','0375869026')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('2','0545392551')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('3','0316512583')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('4','0385514239')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('5','0399593489')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('6','0743250974')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('7','0814436714')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('8','1632861054')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('9','1250093465')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('10','1501124021')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('11','0143111728')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('12','0062457713')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('13','150117813X')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('14','0545791324')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('15','1235124021')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('16','0523131728')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('17','1063454613')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('18','1524387133')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('19','1336745324')",
-			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('20','1830295538')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('1','1623156122')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('2','0375869026')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('3','0545392551')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('4','0316512583')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('5','0385514239')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('6','0399593489')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('7','0743250974')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('8','0814436714')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('9','1632861054')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('10','1250093465')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('11','1501124021')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('12','0143111728')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('13','0062457713')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('14','150117813X')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('15','0545791324')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('16','1235124021')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('17','0523131728')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('18','1063454613')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('19','1524387133')",
+			"INSERT IGNORE INTO authorISBN(authorID, ISBN) VALUES ('20','1336745324')",
 	};
 			
 	public static void resetDatabase(Connection conn){
@@ -319,9 +318,10 @@ public class Driver {
 			}
 			
 			// Insert authorISBN
-			for (int i=1; i < authorISBN.length; i++){
+			for (int i=0; i < authorISBN.length; i++){
 				PreparedStatement insert = conn.prepareStatement(authorISBN[i]);
 				insert.executeUpdate();
+				System.out.println(authorISBN[i]);
 			}
 		}
 		catch (Exception e){
