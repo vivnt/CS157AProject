@@ -206,12 +206,12 @@ public class Driver {
 	public static void addNewTitle() throws Exception {
 		try {
 			Connection conn = getConnection();
-			String query2 = "INSERT INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0143039431','1','2006','10','The Grapes of Wrath','6')";
-			PreparedStatement statement2 = conn.prepareStatement(query2);
-			statement2.executeUpdate();
-			String query = "INSERT INTO authorISBN(authorID, ISBN) VALUES ('21','0143039431')";
+			String query = "INSERT INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0143039431','1','2006','10','The Grapes of Wrath','6')";
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.executeUpdate();
+			String query2 = "INSERT INTO authorISBN(authorID, ISBN) VALUES ('21','0143039431')";
+			PreparedStatement statement2 = conn.prepareStatement(query2);
+			statement2.executeUpdate();
 		}
 		catch (Exception e){
 			System.out.println(e);
