@@ -206,12 +206,12 @@ public class Driver {
 	public static void addNewTitle() throws Exception {
 		try {
 			Connection conn = getConnection();
-			String query = "INSERT INTO authorISBN(authorID, ISBN) VALUES ('21','0143039431')";
-			PreparedStatement statement = conn.prepareStatement(query);
-			statement.executeUpdate();
 			String query2 = "INSERT INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0143039431','1','2006','10','The Grapes of Wrath','6')";
 			PreparedStatement statement2 = conn.prepareStatement(query2);
 			statement2.executeUpdate();
+			String query = "INSERT INTO authorISBN(authorID, ISBN) VALUES ('21','0143039431')";
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.executeUpdate();
 		}
 		catch (Exception e){
 			System.out.println(e);
@@ -339,22 +339,22 @@ public class Driver {
 		createTable(connect);
 		// Add Demo Data
 		insertData(connect);
-//		
-//		System.out.println("Select all authors");
-//		getAuthors();
-//		System.out.println("Select all publishers");
-//		getPublishers();
-//		System.out.println("Select a specific publisher");
-//		getSpecificPublishers("s");
-//		System.out.println("Add new author");
-//		addNewAuthor();
-//		System.out.println("Update existing info for author");
-//		updateAuthor();	
-//		System.out.println("Add new publisher");
-//		addNewPublisher();
-//		System.out.println("Edit existing info for publisher");
-//		updatePublisher();
-//		System.out.println("Add new title for an author");
-//		addNewTitle();
+		
+		System.out.println("Select all authors");
+		getAuthors();
+		System.out.println("Select all publishers");
+		getPublishers();
+		System.out.println("Select a specific publisher");
+		getSpecificPublishers("s");
+		System.out.println("Add new author");
+		addNewAuthor();
+		System.out.println("Update existing info for author");
+		updateAuthor();	
+		System.out.println("Add new publisher");
+		addNewPublisher();
+		System.out.println("Edit existing info for publisher");
+		updatePublisher();
+		System.out.println("Add new title for an author");
+		addNewTitle();
 	}
 }
