@@ -11,7 +11,7 @@ public class Driver {
 			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0062457713','12','2016','245.20','The Subtle Art','12')",
 			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0375869026','20','2012','1.20','Wonder','1')",
 			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0143111728','6','2017','65.20','Find your why','11')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1623156122','11','2016','34.20','The Instant Pot','0')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1623156122','11','2016','34.20','The Instant Pot','2')",
 			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0545392551','17','2012','23.20','Giraffes cant dance','2')",
 			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0316512583','9','2017','12.20','Obama','3')",
 			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0385514239','13','2017','76.20','Origin','4')",
@@ -22,7 +22,7 @@ public class Driver {
 			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('0385514200','4','1995','23.24','Alice','3')",
 			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1300523489','19','2005','65.02','The Wolf','15')",
 			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('2400861054','17','2017','24.65','My Life','11')",
-			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('000137213X','8','2003','46.78','Basketball Time','23')",
+			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('000137213X','8','2003','46.78','Basketball Time','8')",
 			"INSERT IGNORE INTO titles(isbn, editionNumber, year, price, title, publisherID) VALUES ('1115741315','1','2010','100.99','Lives Matter','1')"
 	};
 	
