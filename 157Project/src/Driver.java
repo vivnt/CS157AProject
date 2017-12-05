@@ -321,7 +321,6 @@ public class Driver {
 			for (int i=0; i < authorISBN.length; i++){
 				PreparedStatement insert = conn.prepareStatement(authorISBN[i]);
 				insert.executeUpdate();
-				System.out.println(authorISBN[i]);
 			}
 		}
 		catch (Exception e){
@@ -340,22 +339,22 @@ public class Driver {
 		createTable(connect);
 		// Add Demo Data
 		insertData(connect);
-		
-		System.out.println("Select all authors");
-		getAuthors();
-		System.out.println("Select all publishers");
-		getPublishers();
-		System.out.println("Select a specific publisher");
-		getSpecificPublishers("s");
-		System.out.println("Add new author");
-		addNewAuthor();
-		System.out.println("Update existing info for author");
-		updateAuthor();	
-		System.out.println("Add new publisher");
-		addNewPublisher();
-		System.out.println("Edit existing info for publisher");
-		updatePublisher();
-		System.out.println("Add new title for an author");
-		addNewTitle();
+//		
+//		System.out.println("Select all authors");
+//		getAuthors();
+//		System.out.println("Select all publishers");
+//		getPublishers();
+//		System.out.println("Select a specific publisher");
+//		getSpecificPublishers("s");
+//		System.out.println("Add new author");
+//		addNewAuthor();
+//		System.out.println("Update existing info for author");
+//		updateAuthor();	
+//		System.out.println("Add new publisher");
+//		addNewPublisher();
+//		System.out.println("Edit existing info for publisher");
+//		updatePublisher();
+//		System.out.println("Add new title for an author");
+//		addNewTitle();
 	}
 }
